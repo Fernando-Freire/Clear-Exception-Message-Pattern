@@ -1,5 +1,171 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\begin{document}
-(Type your content here.)
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Clear Exception Message Pattern}
+
+\author{Eduardo Delgado Coloma Bier\inst{1}, Fernanda de Camargo Magano\inst{1}, \\ Fernando Freire Scattone\inst{1},
+  Florence Alyssa Sakuma Shibata\inst{1}, Tallys Gustavo Martins\inst{1} }
+
+
+\address{Instituto de Matemática de Estatística -- Universidade de São Paulo
+  (USP)\\
+  -- SP -- Brazil
+  \email{\{eduardo.bier,fernanda.magano,fernando.scattone,florence.shibata\}@usp.br}
+  \email{tallys@ime.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+
+\textbf{TODO LIST:} \\
+Introduction  \textbf{Fernanda e Alyssa} \\
+Motivation: \textbf{Fernando complementa} \\
+Antagonic Forces:  \textbf{Fernando}  \\
+Strengths:  \textbf{Alyssa complementa} \\
+Weaknesses: \textbf{Fernando} \\
+Consequences: \textbf{Tallys} \\
+Known usages: \textbf{Eduardo}  \\
+Recommended usage: \textbf{Tallys}  \\
+Discouraged usage: \textbf{Tallys} \\
+
+Code examples: \\
+\textbf{ Fernanda:} exemplo em ruby e sugestão para o código/formato do padrão\\
+\textbf{ Eduardo:} exemplo em java
+ 
+
+ 
+  
+  
+\end{abstract}
+        
+
+\section{Introduction}  \textbf{Fernanda e Alyssa}
+
+When developing a system, a quality code is desirable to solve the proposed problems and meet the requirements. However, as the system becomes more complex, it becomes more difficult to isolate the errors and bugs and fix them. The ability to detect, diagnose and handle these errors is fundamental to the maintenance and support of final product. For such, mechanisms like log to detect errors the moment they occur and obtain sufficient information about them and organized documentation of exceptions help developers to quickly and punctually fix them.
+
+Even though there is a large variety of languages for application development, there is no standard documentation for handling exceptions or errors. Each developer is responsible for the task to generate some sort of mechanism for capturing and handling these cases.
+
+Aiming to simplify and fix bugs more easily the proposed Clear Exception Message Pattern[...]
+
+%Maintaining a system is an important part of the software production and development  process. If developers have  mechanisms to detect errors the moment they occur and obtain sufficient information about them, they can find and fix bugs more easily. 
+%If the given error message is incomplete or have inappropriate information it is difficult to maintain the application. It is important to find a meaningful and concise message  
+
+\section{Patterns}
+\begin{flushleft}
+\textbf{Name:} Clear Exception Message Pattern\newline
+
+\textbf{Type:}  Clarity \newline
+
+\textbf{Intent:} Write exception messages that are specific to the domain of the application and easier to understand.\newline
+
+\textbf{Motivation:} \textbf{Fernando complementa}
+When writing applications it is necessary to catch and treat exceptions that may arise. Since the messages should help the programmer better understand where the errors have occurred and how to fix them, it is important to have expressive messages when throwing an exception. 
+Also, the developers of the programs maybe don't have all the technical expertise to understand all the exceptions from the native language, so it is useful to have exceptions that can indicate where the error occurred , what might be and maybe imply a common error in some cases.\newline
+
+
+\textbf{Also Known As:} Error Message Pattern, Formatted Message Pattern\newline
+
+\textbf{Antagonic Forces:} While writing or using a program, the developer may do a wrong assignment type or try to open a file that does not exist or connect with an on-line address that is not available. These are not always errors on the code itself, but circumstances of the environment on which the code is being executed.If these errors occurred during production, the developer , when running the code, maybe will come against a difficult to interpret exception which may not give an friendly suggestion on where this error occurred. This happens, usually, because the language developers only write exceptions for very broad cases that cover various specif cases which the application developer may find difficult to find in they're own code, which may happen often in large scale projects.  \newline 
+\textbf{Fernando}
+
+\textbf{Strengths:}  \textbf{Alyssa complementa}
+Among the strengths of this pattern it is possible to cite:
+\begin{enumerate}
+\item The messages will follow a pattern and will be similar to each other
+
+\item It is consistent with previous messages used in other parts of the code.  
+
+\item It is clearer to understand how the codes works for other programmers that didn’t program the application
+
+\item 
+
+
+
+\end{enumerate}
+
+
+
+\textbf{Weaknesses:}
+\begin{itemize}
+\item the amount of labor dedicated to find possible exceptions that may occur might be too much to handle , depending on the team working the code, time constrains, and scale of the project.
+\end{itemize}\textbf{Fernando}\newline 
+
+
+\textbf{Consequences:}\newline
+\textbf{Tallys}
+
+
+\textbf{Known usages:}\newline
+\textbf{Eduardo}
+
+\textbf{Recommended usage:}Fernando Sugere: Large-scale projects where new people are joining and the production environment could be made a little bit friendlier by helping new programmers find their errors\newline
+\textbf{Tallys}
+
+\textbf{Discouraged usage:}\newline
+\textbf{Tallys}
+
+
+
+\textbf{Code examples:}
+\textbf{ Fernanda:} exemplo em ruby e sugestão para o código/formato do padrão\\
+\textbf{ Eduardo:} exemplo em java
+ 
+ 
+ Sugestões para o código:
+ - Exception com files
+ - Exception com conexão
+ - Conversão de tipos incompatíveis (como concatenação de string com int, de boolean para double...)
+ 
+ Possibilidade no geral - para diferentes tipos de erro:
+ Imprimir ``Exceção:'' + e + metodo\_que\_ocorreu\_a\_exceção
+ 
+ Específico:
+ - Para arquivos: nome do arquivo
+ - Problema de conexão: código de status
+ - Para tipos incompatíveis: variáveis envolvidas e tipos
+ 
+ 
+ 
+ 
+ 
+ \end{flushleft}
+
+
+\section{Figures and Captions}\label{sec:figs}
+
+
+Figure and table captions should be centered if less than one line
+(Figure), otherwise justified and indented by 0.8cm on
+both margins, as shown in Figure. The caption font must
+be Helvetica, 10 point, boldface, with 6 points of space before and after each
+caption.
+
+In tables, try to avoid the use of colored or shaded backgrounds, and avoid
+thick, doubled, or unnecessary framing lines. When reporting empirical data,
+do not use more decimal digits than warranted by their precision and
+reproducibility. Table caption must be placed before the table (see Table 1)
+and the font used must also be Helvetica, 10 point, boldface, with 6 points of
+space before and after each caption.
+ 
+
+\section{Conclusion}
+
+In the example used \cite{smith:99}
+
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
 \end{document}
