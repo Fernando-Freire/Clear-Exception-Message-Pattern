@@ -23,6 +23,8 @@
   \email{tallys@ime.br}
 }
 
+\usepackage{xcolor,listings}
+
 \begin{document} 
 
 \maketitle
@@ -41,11 +43,11 @@ Recommended usage: \textbf{Tallys}  \\
 Discouraged usage: \textbf{Tallys} \\
 
 Code examples: \\
-\textbf{ Fernanda:} exemplo em ruby e sugestão para o código/formato do padrão\\
-\textbf{ Eduardo:} exemplo em java
+\textbf{ Fernanda:} exemplo em ruby \\
+\textbf{ Eduardo:} exemplo em java \\
  
 
- 
+Pattern format description: \textbf{Fernanda}
   
   
 \end{abstract}
@@ -53,11 +55,17 @@ Code examples: \\
 
 \section{Introduction}  \textbf{Fernanda e Alyssa}
 
-When developing a system, a quality code is desirable to solve the proposed problems and meet the requirements. However, as the system becomes more complex, it becomes more difficult to isolate the errors and bugs and fix them. The ability to detect, diagnose and handle these errors is fundamental to the maintenance and support of final product. For such, mechanisms like log to detect errors the moment they occur and obtain sufficient information about them and organized documentation of exceptions help developers to quickly and punctually fix them.
+When developing a system, a quality code is desirable to solve the proposed problems and meet the requirements. However, as the system becomes more complex, it turns more difficult to isolate errors, bugs and fix them. The ability to detect, diagnose and handle these errors is fundamental to the maintenance and support of final product. For such, mechanisms like log to detect errors at the moment they occur and obtain sufficient information about them, as well as  organized documentation of exceptions help developers to quickly and punctually fix them.
 
-Even though there is a large variety of languages for application development, there is no standard documentation for handling exceptions or errors. Each developer is responsible for the task to generate some sort of mechanism for capturing and handling these cases.
+If the errors are handle incorrectly, they can reduce the usability of the system. For example, when errors are not handled and appear to the user of the application, they can confuse them and build a bad image of the system, that can be known as unreliable. If the message given in the exception isn't clear, the programmers will need more time to find and fix the problem and this delay can cost to the user of the system, like a company.
 
-Aiming to simplify and fix bugs more easily the proposed Clear Exception Message Pattern[...]
+[Opcional] - inserir diagrama de tratamento das exceptions[?] e comentar
+
+Even though there is a large variety of languages for application development, there is no standard documentation for handling exceptions or errors. Each developer is responsible for the task to generate some sort of mechanism for capturing and handling these cases. Aiming to simplify and fix bugs more easily the proposed Clear Exception Message Pattern seeks a standard to write messages in exceptions that are not too long but, at the same time, is sufficiently expressive  to understand what is the problem and where it occur.
+
+This pattern can be used in projects of different domains, since catching exceptions is fundamental in every application developed in real world scenarios. It brings consistency and consequently allows the reuse of code.
+
+
 
 %Maintaining a system is an important part of the software production and development  process. If developers have  mechanisms to detect errors the moment they occur and obtain sufficient information about them, they can find and fix bugs more easily. 
 %If the given error message is incomplete or have inappropriate information it is difficult to maintain the application. It is important to find a meaningful and concise message  
@@ -80,27 +88,35 @@ Also, the developers of the programs maybe don't have all the technical expertis
 \textbf{Antagonic Forces:} While writing or using a program, the developer may do a wrong assignment type or try to open a file that does not exist or connect with an on-line address that is not available. These are not always errors on the code itself, but circumstances of the environment on which the code is being executed.If these errors occurred during production, the developer , when running the code, maybe will come against a difficult to interpret exception which may not give an friendly suggestion on where this error occurred. This happens, usually, because the language developers only write exceptions for very broad cases that cover various specif cases which the application developer may find difficult to find in they're own code, which may happen often in large scale projects.  \newline 
 \textbf{Fernando}
 
-\textbf{Strengths:}  \textbf{Alyssa complementa}
+\textbf{Strengths:} 
+% \textbf{Alyssa complementa}
 Among the strengths of this pattern it is possible to cite:
 \begin{enumerate}
 \item The messages will follow a pattern and will be similar to each other
 
 \item It is consistent with previous messages used in other parts of the code.  
 
+\item It provides succinct information of the error increasing the quality and readability of the code
+
 \item It is clearer to understand how the codes works for other programmers that didn’t program the application
 
-\item 
+\item It helps the maintenance of the application and it's lifecycle management
 
+\item  Informing specific error message allows robust framework implementation and program flow monitoring
 
+\textbf{[CASO NOSSO CÓDIGO TENHA TEMPLATE (algum lugar que centralize o tratamento de erros) - CASO NÃO TENHA, RETIRAR ESTE ITEM!]}
+\item The improvement of exception handling later in the development process can be done easily in a single spot
 
 \end{enumerate}
 
 
 
 \textbf{Weaknesses:}
-\begin{itemize}
-\item the amount of labor dedicated to find possible exceptions that may occur might be too much to handle , depending on the team working the code, time constrains, and scale of the project.
-\end{itemize}\textbf{Fernando}\newline 
+\begin{enumerate}
+\item The amount of labor dedicated to find possible exceptions that may occur might be too much to handle , depending on the team working the code, time constrains, and scale of the project.
+
+\item There is a possibility of re-throw exceptions cases (chaining exceptions) causing loss of efficiency
+\end{enumerate}\textbf{Fernando}\newline 
 
 
 \textbf{Consequences:}\newline
@@ -117,30 +133,102 @@ Among the strengths of this pattern it is possible to cite:
 \textbf{Tallys}
 
 
+ 
+\textbf{Pattern format description} 
+\textbf{Fernanda} \\
+
+The Clear Exception Message Pattern deals with some kinds of exception handling messages:
+ \begin{enumerate}
+ \item Exception with files
+ \item Exception with connection status
+ \item Incompatible variable types 
+  \end{enumerate} 
+ 
+The first one treats common problems with files, like: not found, wrong permissions -- try to write in a file opened for reading. The second deals with connection issues. The pattern gives the example of failure to open TCP connection, but other possible issues are timeout, connection forbidden, among others. The last item refers to problems with conversion of types -- if the program sums numbers but among the variables are strings, for example.
+
+A key point when rescuing errors that deserve attention is how generic the handled exception is. Catch the most specific exception as possible is important and is the best approach to be taken since generic errors are not clear and turn more difficult to encounter the error. So one of the goals of the current pattern is writing messages that catch specific exceptions. 
+ 
+One exception has some information associated with it. Among them are the error type, the cause, the trace and they help to understand the exception itself. Then, the pattern messages will contain information about the type of the exception, a brief description and when appropriated, some information about the trace, line the line number when it occurred.
+ 
 
 \textbf{Code examples:}
-\textbf{ Fernanda:} exemplo em ruby e sugestão para o código/formato do padrão\\
+\textbf{ Fernanda:} exemplo em ruby (apêndice) \\
 \textbf{ Eduardo:} exemplo em java
  
  
- Sugestões para o código:
- - Exception com files
- - Exception com conexão
- - Conversão de tipos incompatíveis (como concatenação de string com int, de boolean para double...)
  
- Possibilidade no geral - para diferentes tipos de erro:
- Imprimir ``Exceção:'' + e + metodo\_que\_ocorreu\_a\_exceção
- 
- Específico:
- - Para arquivos: nome do arquivo
- - Problema de conexão: código de status
- - Para tipos incompatíveis: variáveis envolvidas e tipos
- 
- 
- 
- 
- 
+
+
+% \lstinputlisting[language=Ruby]{codd.rb}
+
+ %\begin{lstlisting}[
+ %   label=listing:RubyTest,
+  %  float=h,
+%    caption=clear\_exceptions.rb,%
+%    firstnumber=1,
+  %  language=Ruby,
+   % basicstyle=\ttfamily,
+  %  keywordstyle=\color{red},
+   % stringstyle=\color{blue},]
+
+%#####CONNECTION#####
+
+%#Wrong URL
+%require 'open-uri'
+
+%remote_base_url = "http://nonsense/"
+
+%begin
+  % rpage = open("#{remote_base_url}/")
+%rescue SocketError=>e
+  % puts "#{ e.class.name }: #{ e.message }"
+%else
+  % data = rpage.read
+%end
+
+% if data
+  % File.open("url.html", "w"){|f| f.write(rdata) }
+% end
+
+
+%#####FILES#####
+
+%#Wrong permission in file
+%begin
+%	File.open("/etc/hosts") {|f| f << "example"}
+%rescue IOError => e
+%	puts "#{ e.class.name }: #{ e.message } - #{ e.backtrace[3]}"
+%end
+
+%#File does not exist
+%begin
+%	File.open("does/not/exist")
+%rescue Errno::ENOENT => e
+%	puts "#{ e.class.name }: #{ e.message } - #{ e.backtrace[1]}"
+%end
+
+%#####DATA TYPE#####
+
+%#Wrong type of data given by the user
+%number = false
+%while !number
+  % puts "Write a number>>"
+  % begin
+  %   num = Kernel.gets.match(/\d+/)[0]
+ %  rescue NoMethodError => e
+ %    puts "#{ e.class.name }: #{ e.message }"
+%     puts "\tWrite a number this type\n"
+%   else  
+%     puts "#{num} + 1 is: #{num.to_i+1}"
+ %    number = true
+ %  end  
+%end
+
+%\end{lstlisting}
+  
  \end{flushleft}
+
+
 
 
 \section{Figures and Captions}\label{sec:figs}
@@ -167,5 +255,8 @@ In the example used \cite{smith:99}
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
+\newpage
+Código em Ruby
 
+\lstinputlisting[language=Ruby]{codd.rb}
 \end{document}
